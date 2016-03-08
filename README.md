@@ -1,6 +1,6 @@
 # Welcome pager
 
-Wlecome screen in app containing pager with main features in app. Background of fragments is dynamically changing as you swipe pager.
+Welcome screen in app containing pager with information about main features in app. Background of fragments are dynamically changing as you swipe pager.
 
 ![alt tag](https://github.com/tomaszek87/WelcomeTutorial/blob/master/welcome.gif)
 
