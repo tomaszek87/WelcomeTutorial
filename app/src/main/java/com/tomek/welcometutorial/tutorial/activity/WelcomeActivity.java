@@ -3,7 +3,6 @@ package com.tomek.welcometutorial.tutorial.activity;
 import android.animation.ArgbEvaluator;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -35,16 +34,12 @@ public class WelcomeActivity extends BaseActivity {
     @Bind(R.id.intro_indicator_2)
     ImageView two;
     ImageView[] indicators;
-    int lastLeftValue = 0;
-    CoordinatorLayout mCoordinator;
-    int page = 0;
+    private int page = 0;
     private WelcomeAdapter adapter;
-
     private int color1;
     private int color2;
     private int color3;
-
-    int[] colorList;
+    private int[] colorList;
     private ArgbEvaluator evaluator;
 
 
@@ -53,7 +48,6 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         initPager();
-
     }
 
     private void initPager() {
@@ -63,10 +57,7 @@ public class WelcomeActivity extends BaseActivity {
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.black_trans80));
         }
-        color1 = ContextCompat.getColor(this, R.color.md_cyan_800);
-        color2 = ContextCompat.getColor(this, R.color.md_orange_800);
-        color3 = ContextCompat.getColor(this, R.color.md_green_800);
-        colorList = new int[]{color1, color2, color3};
+        initColors();
         adapter = new WelcomeAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(adapter);
         indicators = new ImageView[]{zero, one, two};
@@ -103,6 +94,10 @@ public class WelcomeActivity extends BaseActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+        initButtons();
+    }
+
+    private void initButtons() {
         mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,27 +106,25 @@ public class WelcomeActivity extends BaseActivity {
             }
         });
 
-
         mSkipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 finish();
             }
         });
-
-
         mFinishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                //  update 1st time pref
-              //  Utils.saveSharedSetting(PagerActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
-
-
             }
         });
+    }
+
+    private void initColors() {
+        color1 = ContextCompat.getColor(this, R.color.md_blue_grey_700);
+        color2 = ContextCompat.getColor(this, R.color.md_green_500);
+        color3 = ContextCompat.getColor(this, R.color.md_blue_500);
+        colorList = new int[]{color1, color2, color3};
     }
 
     void updateIndicators(int position) {

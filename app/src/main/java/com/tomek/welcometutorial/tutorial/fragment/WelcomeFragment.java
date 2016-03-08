@@ -21,7 +21,7 @@ public  class WelcomeFragment extends Fragment {
     ImageView img;
 
 
-    int[] bgs = new int[]{R.drawable.plane, R.drawable.plane, R.drawable.plane};
+    int[] bgs = new int[]{R.drawable.stars, R.drawable.forest, R.drawable.sun};
 
 
     public WelcomeFragment() {
